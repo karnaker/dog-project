@@ -13924,7 +13924,7 @@ dog_files_short percentage: 100.0%
 <li>Adding dropout layers (with a dropout value of 20%) reduced test accuracy to 1.6% (2 epochs), but was kept to prevent overfitting.</li>
 <li>Adding a batch normalization layer at the start improved test accuracy to 2.2% (2 epochs), and this normalizes inputs.</li>
 <li>Adding batch normalization layers after each convolutional layer improved test accuracy to 3.7% (2 epochs). This was done to accelerate training and normalize the input between layers.</li>
-<li>Overall, this model architecture reached test accuracy of 6.1% (8 epochs).</li>
+<li>Overall, this model architecture reached test accuracy of 9.4% (20 epochs).</li>
 </ul>
 
 </div>
@@ -14611,6 +14611,10 @@ test_{network} = bottleneck_features['test']</code></pre>
 </code></pre>
 <p><strong>Question 5:</strong> Outline the steps you took to get to your final CNN architecture and your reasoning at each step.  Describe why you think the architecture is suitable for the current problem.</p>
 <p><strong>Answer:</strong></p>
+<ul>
+<li>The model uses the the pre-trained ResNet-50 model as a fixed feature extractor, where the last output of ResNet-50 is fed as input to our model. We only add a global average pooling layer and a fully connected layer, where the latter contains one node for each dog category and is equipped with a softmax.</li>
+<li>The model was relatively easy to implement (given similarity to prior code cells) and significantly improved accuracy to 81.7%.</li>
+</ul>
 
 </div>
 </div>
@@ -14984,6 +14988,10 @@ Epoch 20/20
 <h3 id="(IMPLEMENTATION)-Test-Your-Algorithm-on-Sample-Images!">(IMPLEMENTATION) Test Your Algorithm on Sample Images!<a class="anchor-link" href="#(IMPLEMENTATION)-Test-Your-Algorithm-on-Sample-Images!">&#182;</a></h3><p>Test your algorithm at least six images on your computer.  Feel free to use any images you like.  Use at least two human and two dog images.</p>
 <p><strong>Question 6:</strong> Is the output better than you expected :) ?  Or worse :( ?  Provide at least three possible points of improvement for your algorithm.</p>
 <p><strong>Answer:</strong></p>
+<ul>
+<li>The output is better than I expected. It's pretty amazing to see the algorithm correctly detect dog breeds that most people may not of heard of.</li>
+<li>Points of improvement: (1) There is some mismatch between the training data and ultimate photos used to test the algorithm. Work to reduce that mismatch between training and ultimate (end user / app) test data would improve the algorithm. (2) Experimenting with the bottleneck features from a different pre-trained model may improve accuracy. (3) Experimenting with other optimization algorithms may improve accuracy (e.g. Adam).</li>
+</ul>
 
 </div>
 </div>
